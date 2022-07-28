@@ -1,5 +1,6 @@
 export const LOGIN_USER = 'LOGIN_USER';
-export const GET_CURRENCIES = 'GET_CURRENCIES';
+export const SET_CURRENCIES = 'SET_CURRENCIES';
+export const SET_EXPENSES = 'SET_EXPENSES';
 
 export const LoginUser = (email) => ({
   type: LOGIN_USER,
@@ -7,6 +8,11 @@ export const LoginUser = (email) => ({
 });
 
 export const getCurrencies = (currencies) => ({
-  type: GET_CURRENCIES,
+  type: SET_CURRENCIES,
   currencies,
+});
+
+export const setExpenses = (expenses) => ({
+  type: SET_EXPENSES,
+  expenses,
 });
