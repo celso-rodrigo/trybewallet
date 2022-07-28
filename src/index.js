@@ -6,12 +6,14 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import store from './redux/store';
 import Login from './pages/Login';
+import Wallet from './pages/Wallet';
 
 ReactDOM.render(
   <BrowserRouter>
     <Provider store={ store }>
       <Switch>
         <Route exact path="/" component={ Login } />
+        <Route path="/carteira" component={ Wallet } />
       </Switch>
     </Provider>
   </BrowserRouter>,
