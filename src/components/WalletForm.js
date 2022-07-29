@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getCurrencies, setExpenses } from '../redux/actions';
+import { getCurrencies, setExpenses, updateTotalSpent } from '../redux/actions';
+
+const alimetacao = 'Alimentação';
 
 class WalletForm extends Component {
   constructor() {
@@ -11,7 +13,7 @@ class WalletForm extends Component {
       value: '',
       currency: 'USD',
       method: 'Dinheiro',
-      tag: 'Alimentação',
+      tag: alimetacao,
       description: '',
       id: 0,
       exchangeRates: {},
@@ -47,12 +49,12 @@ class WalletForm extends Component {
 
   clearState = async () => {
     this.setState((prev) => ({
-      id: prev.id ? prev.id + 1 : 0,
+      id: prev.id + 1,
       value: '',
+      currency: 'USD',
+      method: 'Dinheiro',
+      tag: alimetacao,
       description: '',
-      currency: '',
-      method: '',
-      tag: '',
     }));
   };
 
@@ -61,10 +63,19 @@ class WalletForm extends Component {
     this.setState({ exchangeRates });
   };
 
+  calculateTotalValue = () => {
+    const { dispatchTotal } = this.props;
+    const { value, currency, exchangeRates } = this.state;
+    const multiplier = exchangeRates[currency].ask;
+    const total = value * multiplier;
+    dispatchTotal(total);
+  }
+
   updateExpenses = async () => {
     const { dispatchExpenses } = this.props;
     await this.getExchangeRates();
     dispatchExpenses(this.state);
+    this.calculateTotalValue();
     await this.clearState();
   };
 
@@ -159,7 +170,7 @@ class WalletForm extends Component {
               ({ target }) => this.handleInputs('tag', target)
             }
           >
-            <option name="tag-select">Alimentação</option>
+            <option name="tag-select">{alimetacao}</option>
             <option name="tag-select">Lazer</option>
             <option name="tag-select">Trabalho</option>
             <option name="tag-select">Transporte</option>
@@ -181,6 +192,7 @@ class WalletForm extends Component {
 WalletForm.propTypes = {
   dispatchCurrencies: PropTypes.func.isRequired,
   dispatchExpenses: PropTypes.func.isRequired,
+  dispatchTotal: PropTypes.func.isRequired,
   allCurrencies: PropTypes.arrayOf(PropTypes.string.isRequired),
 };
 
@@ -195,6 +207,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   dispatchCurrencies: (currencies) => dispatch(getCurrencies(currencies)),
   dispatchExpenses: (expenses) => dispatch(setExpenses(expenses)),
+  dispatchTotal: (totalSpenses) => dispatch(updateTotalSpent(totalSpenses)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(WalletForm);
