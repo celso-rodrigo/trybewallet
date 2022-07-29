@@ -80,7 +80,7 @@ class WalletForm extends Component {
   };
 
   render() {
-    const { allCurrencies } = this.props;
+    const { allCurrencies, editing, editingId } = this.props;
     const {
       value,
       description,
@@ -178,13 +178,26 @@ class WalletForm extends Component {
           </select>
         </label>
 
-        <button
-          type="button"
-          onClick={ this.updateExpenses }
-        >
-          Adicionar despesa
-        </button>
+        {editing
+          ? (
+            <button
+              type="button"
+              data-testid="edit-btn"
+              // onClick={ () => this.editExpense(editingId) }
+            >
+              Editar despesa
+            </button>)
+
+          : (
+            <button
+              type="button"
+              onClick={ this.updateExpenses }
+            >
+              Adicionar despesa
+            </button>
+          )}
       </form>
+
     );
   }
 }
@@ -194,6 +207,8 @@ WalletForm.propTypes = {
   dispatchExpenses: PropTypes.func.isRequired,
   dispatchTotal: PropTypes.func.isRequired,
   allCurrencies: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  editing: PropTypes.bool.isRequired,
+  editingId: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = (state) => ({

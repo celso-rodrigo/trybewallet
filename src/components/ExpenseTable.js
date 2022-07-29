@@ -22,7 +22,13 @@ class ExpenseTable extends Component {
         <td>{convertedValue.toFixed(2)}</td>
         <td>Real</td>
         <td>
-          <button type="button">Editar</button>
+          <button
+            type="button"
+            data-testid="edit-btn"
+            // onClick={ () => deleteExpense(expense.id, convertedValue) }
+          >
+            Editar
+          </button>
           <button
             type="button"
             data-testid="delete-btn"
