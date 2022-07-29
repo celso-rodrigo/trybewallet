@@ -1,4 +1,9 @@
-import { SET_CURRENCIES, SET_EXPENSES, UPDATE_TOTAL_SPENT } from '../actions';
+import {
+  SET_CURRENCIES,
+  SET_EXPENSES,
+  UPDATE_TOTAL_SPENT,
+  REMOVE_EXPENSE,
+} from '../actions';
 
 const INITIAL_STATE = {
   totalSpenses: 0,
@@ -24,6 +29,12 @@ const wallet = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       totalSpenses: state.totalSpenses + action.totalSpenses,
+    };
+  case REMOVE_EXPENSE:
+    return {
+      ...state,
+      totalSpenses: state.totalSpenses - action.removeAmount,
+      expenses: state.expenses.filter((expense) => expense.id !== action.id),
     };
   default:
     return state;

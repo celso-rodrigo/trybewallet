@@ -32,11 +32,11 @@ class Table extends Component {
 }
 
 Table.propTypes = {
-  expenses: PropTypes.arrayOf(PropTypes.string),
+  expenses: PropTypes.arrayOf(PropTypes.object),
 };
 
 Table.defaultProps = {
-  expenses: {},
+  expenses: [],
 };
 
 const mapStateToProps = (state) => ({

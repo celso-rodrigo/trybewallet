@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { removeExpense } from '../redux/actions';
 
 class ExpenseTable extends Component {
   render() {
-    const { expense } = this.props;
+    const { expense, deleteExpense } = this.props;
     const usedExchange = expense.exchangeRates[expense.currency].name;
     const usedExchangeValue = Number(expense.exchangeRates[expense.currency].ask);
     const convertedValue = Number(expense.value * usedExchangeValue);
@@ -11,7 +13,6 @@ class ExpenseTable extends Component {
 
     return (
       <tr>
-        {console.log(expense)}
         <td>{expense.description}</td>
         <td>{expense.tag}</td>
         <td>{expense.method}</td>
@@ -22,7 +23,13 @@ class ExpenseTable extends Component {
         <td>Real</td>
         <td>
           <button type="button">Editar</button>
-          <button type="button">Excluir</button>
+          <button
+            type="button"
+            data-testid="delete-btn"
+            onClick={ () => deleteExpense(expense.id, convertedValue) }
+          >
+            Excluir
+          </button>
         </td>
       </tr>
     );
@@ -33,12 +40,19 @@ ExpenseTable.propTypes = {
   expense: PropTypes.shape({
     currency: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    exchangeRates: PropTypes.objectOf(PropTypes.string.isRequired).isRequired,
+    exchangeRates: PropTypes.objectOf(
+      PropTypes.objectOf(PropTypes.string.isRequired).isRequired,
+    ).isRequired,
     id: PropTypes.number.isRequired,
     method: PropTypes.string.isRequired,
     tag: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
   }).isRequired,
+  deleteExpense: PropTypes.func.isRequired,
 };
 
-export default ExpenseTable;
+const mapDispatchToProps = (dispatch) => ({
+  deleteExpense: (id, removeAmount) => dispatch(removeExpense(id, removeAmount)),
+});
+
+export default connect(null, mapDispatchToProps)(ExpenseTable);

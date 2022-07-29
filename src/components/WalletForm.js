@@ -193,11 +193,7 @@ WalletForm.propTypes = {
   dispatchCurrencies: PropTypes.func.isRequired,
   dispatchExpenses: PropTypes.func.isRequired,
   dispatchTotal: PropTypes.func.isRequired,
-  allCurrencies: PropTypes.arrayOf(PropTypes.string.isRequired),
-};
-
-WalletForm.defaultProps = {
-  allCurrencies: [],
+  allCurrencies: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
 };
 
 const mapStateToProps = (state) => ({
