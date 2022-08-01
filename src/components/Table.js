@@ -41,7 +41,7 @@ class Table extends Component {
 
 Table.propTypes = {
   expenses: PropTypes.arrayOf(PropTypes.object),
-  editing: PropTypes.bool.isRequired,
+  // editing: PropTypes.bool.isRequired,
 };
 
 Table.defaultProps = {
