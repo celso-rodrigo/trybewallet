@@ -4,9 +4,9 @@ import userEvent from '@testing-library/user-event';
 import {
   renderWithRedux,
   renderWithRouterAndRedux,
-} from '../../tests/helpers/renderWith';
-import Login from '../Login';
-import App from '../../App';
+} from './helpers/renderWith';
+import Login from '../pages/Login';
+import App from '../App';
 
 describe('Tests of Login component', () => {
   const validEmail = 'test@work.com';

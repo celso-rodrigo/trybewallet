@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { removeExpense } from '../redux/actions';
+import { removeExpense, editExpense } from '../redux/actions';
 
 class ExpenseTable extends Component {
   render() {
-    const { expense, deleteExpense } = this.props;
+    const { expense, deleteExpense, edditingExpense } = this.props;
     const usedExchange = expense.exchangeRates[expense.currency].name;
     const usedExchangeValue = Number(expense.exchangeRates[expense.currency].ask);
     const convertedValue = Number(expense.value * usedExchangeValue);
@@ -25,7 +25,7 @@ class ExpenseTable extends Component {
           <button
             type="button"
             data-testid="edit-btn"
-            // onClick={ () => deleteExpense(expense.id, convertedValue) }
+            onClick={ () => edditingExpense(expense.id) }
           >
             Editar
           </button>
@@ -55,10 +55,12 @@ ExpenseTable.propTypes = {
     value: PropTypes.string.isRequired,
   }).isRequired,
   deleteExpense: PropTypes.func.isRequired,
+  edditingExpense: PropTypes.bool.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
   deleteExpense: (id, removeAmount) => dispatch(removeExpense(id, removeAmount)),
+  edditingExpense: (idToEdit) => dispatch(editExpense(idToEdit)),
 });
 
 export default connect(null, mapDispatchToProps)(ExpenseTable);
