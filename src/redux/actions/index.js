@@ -3,7 +3,7 @@ export const SET_CURRENCIES = 'SET_CURRENCIES';
 export const SET_EXPENSES = 'SET_EXPENSES';
 export const UPDATE_TOTAL_SPENT = 'UPDATE_TOTAL_SPENT';
 export const REMOVE_EXPENSE = 'REMOVE_EXPENSE';
-export const EDIT_EXPENSE = 'EDIT_EXPENSE';
+// export const EDIT_EXPENSE = 'EDIT_EXPENSE';
 // export const UPDATE_EDITED_EXPENSE = 'UPDATE_EDITED_EXPENSE';
 
 export const LoginUser = (email) => ({
@@ -32,10 +32,10 @@ export const removeExpense = (id, removeAmount) => ({
   removeAmount,
 });
 
-export const editExpense = (idToEdit) => ({
-  type: EDIT_EXPENSE,
-  idToEdit,
-});
+// export const editExpense = (idToEdit) => ({
+//   type: EDIT_EXPENSE,
+//   idToEdit,
+// });
 
 // export const updateEditedExpenses = (expenses, debit) => ({
 //   type: UPDATE_EDITED_EXPENSE,

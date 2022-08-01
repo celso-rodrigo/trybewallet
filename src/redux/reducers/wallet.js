@@ -3,7 +3,7 @@ import {
   SET_EXPENSES,
   UPDATE_TOTAL_SPENT,
   REMOVE_EXPENSE,
-  EDIT_EXPENSE,
+  // EDIT_EXPENSE,
   // UPDATE_EDITED_EXPENSE,
 } from '../actions';
 
@@ -38,12 +38,12 @@ const wallet = (state = INITIAL_STATE, action) => {
       totalSpenses: state.totalSpenses - action.removeAmount,
       expenses: state.expenses.filter((expense) => expense.id !== action.id),
     };
-  case EDIT_EXPENSE:
-    return {
-      ...state,
-      editor: !state.editor,
-      idToEdit: action.idToEdit,
-    };
+  // case EDIT_EXPENSE:
+  //   return {
+  //     ...state,
+  //     editor: !state.editor,
+  //     idToEdit: action.idToEdit,
+  //   };
   // case UPDATE_EDITED_EXPENSE:
   //   return {
   //     ...state,

@@ -96,7 +96,7 @@ class WalletForm extends Component {
   // }
 
   render() {
-    const { allCurrencies, editing, editingId } = this.props;
+    const { allCurrencies } = this.props;
     const {
       value,
       description,
@@ -149,6 +149,7 @@ class WalletForm extends Component {
             && allCurrencies.map((currCurrency) => (
               <option
                 name="currency-select"
+                value={ currCurrency }
                 key={ `${currCurrency}-urrency-select` }
               >
                 {currCurrency}
@@ -168,9 +169,24 @@ class WalletForm extends Component {
               ({ target }) => this.handleInputs('method', target)
             }
           >
-            <option name="method-select">Dinheiro</option>
-            <option name="method-select">Cartão de crédito</option>
-            <option name="method-select">Cartão de débito</option>
+            <option
+              name="method-select"
+              value="Dinheiro"
+            >
+              Dinheiro
+            </option>
+            <option
+              name="method-select"
+              value="Cartão de crédito"
+            >
+              Cartão de crédito
+            </option>
+            <option
+              name="method-select"
+              value="Cartão de débito"
+            >
+              Cartão de débito
+            </option>
           </select>
         </label>
 
@@ -186,32 +202,20 @@ class WalletForm extends Component {
               ({ target }) => this.handleInputs('tag', target)
             }
           >
-            <option name="tag-select">{alimetacao}</option>
-            <option name="tag-select">Lazer</option>
-            <option name="tag-select">Trabalho</option>
-            <option name="tag-select">Transporte</option>
-            <option name="tag-select">Saúde</option>
+            <option name="tag-select" value={ alimetacao }>{alimetacao}</option>
+            <option name="tag-select" value="Lazer">Lazer</option>
+            <option name="tag-select" value="Trabalho">Trabalho</option>
+            <option name="tag-select" value="Transporte">Transporte</option>
+            <option name="tag-select" value="Saúde">Saúde</option>
           </select>
         </label>
 
-        {editing
-          ? (
-            <button
-              type="button"
-              data-testid="edit-btn"
-              onClick={ () => this.editExpense(editingId) }
-            >
-              Editar despesa
-            </button>)
-
-          : (
-            <button
-              type="button"
-              onClick={ this.updateExpenses }
-            >
-              Adicionar despesa
-            </button>
-          )}
+        <button
+          type="button"
+          onClick={ this.updateExpenses }
+        >
+          Adicionar despesa
+        </button>
       </form>
 
     );
@@ -223,8 +227,8 @@ WalletForm.propTypes = {
   dispatchExpenses: PropTypes.func.isRequired,
   dispatchTotal: PropTypes.func.isRequired,
   allCurrencies: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  editing: PropTypes.bool.isRequired,
-  editingId: PropTypes.number.isRequired,
+  // editing: PropTypes.bool.isRequired,
+  // editingId: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = (state) => ({

@@ -20,7 +20,7 @@ class Header extends Component {
                fazer com que o resultado seja, por exemplo, "-0.00001" e
                isso resultara em "-0.00". Para corrigir esse problema qualquer
                valor menor 0.00 será arredondado para 0.00. */}
-              {totalSpent < 0.00
+              {totalSpent <= 0.00
                 ? (0).toFixed(2)
                 : totalSpent.toFixed(2)}
             </span>

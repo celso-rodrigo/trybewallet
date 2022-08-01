@@ -6,6 +6,7 @@ import {
 } from '../tests/helpers/renderWith';
 import userEvent from '@testing-library/user-event';
 import Wallet from '../pages/Wallet';
+import Header from '../components/Header';
 import mockData from './helpers/mockData';
 
 describe('Tests of Wallet component', () => {
@@ -50,10 +51,13 @@ describe('Tests of Wallet component', () => {
   });
 
   it('Should display the user email and total expenses when load:', () => {
-    renderWithRedux(<Wallet />, {
+    renderWithRedux(<Header />, {
       initialState: {
         user : {
           email: 'teste@teste.com',
+        },
+        wallet: {
+          totalSpenses: 0,
         },
       }
     });
@@ -73,6 +77,11 @@ describe('Tests of Wallet component', () => {
     const submitButton = screen.getByRole('button');
     const valueInput = screen.getByTestId('value-input');
     const descInput = screen.getByTestId('description-input');
+    const currencyInput = screen.getByTestId('currency-input');
+    const methodInput = screen.getByTestId('method-input');
+    const tagInput = screen.getByTestId('tag-input');
+    userEvent.selectOptions(tagInput, 'Lazer'); 
+    userEvent.selectOptions(methodInput, 'Cartão de crédito'); 
     userEvent.type(valueInput, '10');
     userEvent.type(descInput, 'Exemplo de descrição');
     userEvent.click(submitButton);
@@ -81,6 +90,8 @@ describe('Tests of Wallet component', () => {
     expect(fetch).toHaveBeenCalled();
     expect(fetch).toHaveBeenCalledWith(expectedUrl);
     await screen.findByText('Exemplo de descrição');
+    await screen.findAllByText('Lazer');
+    await screen.findAllByText('Cartão de crédito');
     await screen.findByText('10.00');
   });
 
