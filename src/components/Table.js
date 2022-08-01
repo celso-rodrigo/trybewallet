@@ -5,7 +5,7 @@ import ExpenseTable from './ExpenseTable';
 
 class Table extends Component {
   render() {
-    const { expenses, editing } = this.props;
+    const { expenses } = this.props;
     return (
 
       <table>
