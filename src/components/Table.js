@@ -2,24 +2,43 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ExpenseTable from './ExpenseTable';
+import '../styles/table.css';
 
 class Table extends Component {
   render() {
     const { expenses } = this.props;
     return (
 
-      <table>
+      <table className="expenses-table">
         <thead>
           <tr>
-            <th>Descrição:</th>
-            <th>Tag:</th>
-            <th>Método de pagamento:</th>
-            <th>Valor:</th>
-            <th>Moeda:</th>
-            <th>Câmbio utilizado:</th>
-            <th>Valor convertido:</th>
-            <th>Moeda de conversão:</th>
-            <th>Editar/Excluir</th>
+            <th>
+              <p>Descrição:</p>
+            </th>
+            <th>
+              <p>Tag:</p>
+            </th>
+            <th>
+              <p>Método de pagamento:</p>
+            </th>
+            <th>
+              <p>Valor:</p>
+            </th>
+            <th>
+              <p>Moeda:</p>
+            </th>
+            <th>
+              <p>Câmbio utilizado:</p>
+            </th>
+            <th>
+              <p>Valor convertido:</p>
+            </th>
+            <th>
+              <p>Moeda de conversão:</p>
+            </th>
+            <th>
+              <p>Editar/Excluir</p>
+            </th>
           </tr>
         </thead>
         <tbody>

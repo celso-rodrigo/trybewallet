@@ -1,0 +1,89 @@
+.expenses-table {
+  background-color: white;
+  margin-top: 50px;
+  min-width: 1200px;
+  width: 100%;
+}
+
+.expenses-table thead {
+  height: 50px;
+}
+
+.expenses-table thead tr {
+  display: flex;
+  height: 50px;
+  justify-content: space-around;
+  padding: 10px 0;
+}
+
+.expenses-table tbody tr {
+  border-top: 2px solid var(--color-five);
+  display: flex;
+  height: 100%;
+  justify-content: space-around;
+  margin-top: 5px;
+  width: 100%;
+}
+
+.expenses-table th {
+  align-items: center;
+  display: flex;
+  width: 125px;
+}
+
+.expenses-table th p {
+  color: var(--color-two);
+  text-align: center;
+  width: 100%;
+}
+
+.expenses-table td {
+  align-items: center;
+  display: flex;
+  height: 80px;
+  justify-content: center;
+  text-align: center;
+  width: 125px;
+}
+
+.expenses-table td p {
+  text-align: center;
+  width: 100%;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.button-container button {
+  background-color: white;
+  border-radius: 10px;
+  padding: 5px;
+  text-align: center;
+  width: 60px;
+}
+
+.edit-button {
+  border-color: var(--color-one);
+  color: var(--color-one);
+  font-weight: 700;
+  transition: 0.2s;
+}
+
+.edit-button:hover {
+  background-color: var(--color-one);
+  color: white;
+}
+
+.delete-button {
+  border-color: var(--color-four);
+  color: var(--color-four);
+  font-weight: 700;
+}
+
+.delete-button:hover {
+  background-color: var(--color-four);
+  color: white;
+}

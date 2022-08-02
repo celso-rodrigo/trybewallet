@@ -7,6 +7,7 @@ import {
   updateTotalSpent,
   // updateEditedExpenses,
 } from '../redux/actions';
+import '../styles/walletForm.css';
 
 const alimetacao = 'Alimentação';
 
@@ -106,14 +107,15 @@ class WalletForm extends Component {
     } = this.state;
 
     return (
-      <form>
+      <form className="wallet-form">
         <label htmlFor="value-input">
-          <p>Valor</p>
+          <h2>Valor</h2>
           <input
             type="number"
             id="value-input"
             value={ value }
             data-testid="value-input"
+            maxLength="10"
             onChange={
               ({ target }) => this.handleInputs('value', target)
             }
@@ -121,12 +123,13 @@ class WalletForm extends Component {
         </label>
 
         <label htmlFor="description-input">
-          <p>Descrição</p>
+          <h2>Descrição</h2>
           <input
             type="text"
             id="description-input"
             value={ description }
             data-testid="description-input"
+            maxLength="50"
             onChange={
               ({ target }) => this.handleInputs('description', target)
             }
@@ -134,7 +137,7 @@ class WalletForm extends Component {
         </label>
 
         <label htmlFor="currency-select">
-          <p>Moeda</p>
+          <h2>Moeda</h2>
           <select
             type="number"
             id="currency-select"
@@ -158,7 +161,7 @@ class WalletForm extends Component {
         </label>
 
         <label htmlFor="method-select">
-          <p>Método de pagamento</p>
+          <h2>Método de pagamento</h2>
           <select
             type="number"
             id="method-select"
@@ -191,7 +194,7 @@ class WalletForm extends Component {
         </label>
 
         <label htmlFor="tag-select">
-          <p>Categoria</p>
+          <h2>Categoria</h2>
           <select
             type="number"
             id="tag-select"

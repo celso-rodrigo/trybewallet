@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+SA+Beginner:wght@400;700&display=swap') ;
+
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;400;700;900&family=Josefin+Sans:ital,wght@0,400;0,700;1,100&display=swap') ;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,600;1,100;1,400;1,600&display=swap') ;
+
+/* RESETS */
+:root {
+
+  --color-one: #0511f2;
+
+  --color-two: #0a46bf;
+
+  --color-three: #d5e2f2;
+
+  --color-four: #1ad9a3;
+
+  --color-five: #d7f0e9;
+
+  --font-one: inconsolata, monospace;
+
+  --font-two: poppins, sans-serif;
+
+  /* --font-three: Arial; */
+
+  --font-four: edu sa beginner, cursive;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}

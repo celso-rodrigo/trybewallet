@@ -13,29 +13,47 @@ class ExpenseTable extends Component {
 
     return (
       <tr>
-        <td>{expense.description}</td>
-        <td>{expense.tag}</td>
-        <td>{expense.method}</td>
-        <td>{expenseValue.toFixed(2)}</td>
-        <td>{usedExchange}</td>
-        <td>{usedExchangeValue.toFixed(2)}</td>
-        <td>{convertedValue.toFixed(2)}</td>
+        <td>
+          <p>{expense.description}</p>
+        </td>
+        <td>
+          <p>{expense.tag}</p>
+        </td>
+        <td>
+          <p>{expense.method}</p>
+        </td>
+        <td>
+          <p>{expenseValue.toFixed(2)}</p>
+        </td>
+        <td>
+          <p>{usedExchange}</p>
+        </td>
+        <td>
+          <p>{usedExchangeValue.toFixed(2)}</p>
+        </td>
+        <td>
+          <p>{convertedValue.toFixed(2)}</p>
+        </td>
         <td>Real</td>
         <td>
-          <button
-            type="button"
-            data-testid="edit-btn"
-            // onClick={ () => edditingExpense(expense.id) }
-          >
-            Editar
-          </button>
-          <button
-            type="button"
-            data-testid="delete-btn"
-            onClick={ () => deleteExpense(expense.id, convertedValue) }
-          >
-            Excluir
-          </button>
+          <div className="button-container">
+            <button
+              type="button"
+              data-testid="edit-btn"
+              className="edit-button"
+              // onClick={ () => edditingExpense(expense.id) }
+            >
+              Editar
+            </button>
+            <button
+              type="button"
+              data-testid="delete-btn"
+              className="delete-button"
+              onClick={ () => deleteExpense(expense.id, convertedValue) }
+            >
+              Excluir
+            </button>
+          </div>
         </td>
       </tr>
     );
